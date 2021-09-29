@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  name: hello-world
+  labels:
+    workflows.argoproj.io/archive-strategy: "false"
+spec:
+  entrypoint: whalesay
+  templates:
+  - name: whalesay
+    container:
+      image: artifactory.haifa.ibm.com:5130/weit/whalesay:latest
+      command: [cowsay]
+      args: ["hello world"]
